@@ -28,6 +28,7 @@ No Bugs
 
 ## Support and contact details
 * Email: drizydarolle@gmail.com
+* phone
 ### License and Copyright details
 * The MIT License (MIT)
 * Copyright (c) 2020**Darolle Shizukane**
