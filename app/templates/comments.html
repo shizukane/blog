@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Dancing+Script:wght@500&family=Raleway&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container" id="shown_comments">
+
+      <div class="col-md-5">
+          <div class="content-section">
+              <div class="card">
+                <div class="card-header">
+                  <h2>{{blog.title}}</h2>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Thoughts on <strong>"{{blog.title}}"</strong> by  <strong>{{blog.user.username}}</strong></p>
+                  <p>{{blog.message}}</p>
+                </div>
+          </div>
+          </div>
+      </div>
+
+    <div class="col-md-7" id="reviews">
+      <div>
+        <h1 class="title">Comments</h1>
+          <hr>
+
+          {% if comments %}
+              {{macro.displayComments(comments)}}
+              <br>
+              <a class="btn btn-warning btn-lg text-center" href="/blog/comment/new/{{blog.id}}"> Write a comment</a>
+          {% else%}
+              <h3 class="text-center">This blog has no comments </h3>
+              <a class="btn btn-warning btn-lg text-center" href="/blog/comment/new/{{blog.id}}"> Write a comment</a>
+          {% endif %}
+      </div>
+    </div>
+
+    </div>
+
+
+    </div>
+
+{% endblock %}

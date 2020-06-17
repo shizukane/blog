@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Dancing+Script:wght@500&family=Raleway&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="text-center">
+    <h1 class="head">Darolles Blog</h1>
+    <h6>~Theres always astory in everything~</h6>
+    <br>
+    <hr>
+    <br>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          Nugget:
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{quote.quote}}</p>
+            <footer class="blockquote-footer">By <cite title="Source Title">{{quote.author}}</cite></footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  {% if blogs %}
+    <h2 class="title text-center">BLOGPOSTS</h2>
+    {% for blog in blogs %}
+      <div class="col-md-6">
+        <div class="card text-center">
+            <div class="card-header">
+                <h3>{{blog.title}}</h3>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{blog.message}}</p>
+                <hr>
+              <p class="card-text"> by: {{blog.user.username}}</p>
+                {% if current_user.is_authenticated %}
+                  <a class="comment" href="{{url_for('main.comments',blog_id = blog.id)}}"> <button type="button" name="button" class="btn btn-warning">comment</button> </a>
+                  {% endif %}
+            </div>
+            <div class="card-footer text-muted">Posted on:
+              {{blog.posted.strftime('%Y-%m-%d')}}
+              </div>
+            </div><br>
+          </div><br>
+      {% endfor %}
+  {% else %}
+  <h2 class="text-center title">There are no Blogs</h2>
+  {% endif %}
+</div>
+{% endblock%}

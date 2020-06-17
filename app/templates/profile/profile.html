@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Dancing+Script:wght@500&family=Raleway&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <!-- displaying  Username-->
+  <h3 class="text-center"> @{{user.username}} </h3>
+  <br>
+  <div class="row">
+    <!--Display profile photo-->
+    <div class="col-md-6 text-center">
+      {% if user.profile_pic_path %}
+      <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail" width="300" height="300">
+      {%else%}
+      <p>No profile picture</p>
+      {% endif %}
+      <br>
+    </div>
+
+    <div class="col-md-6 text-center">
+      <!--Displaying user bio-->
+      {% if user.bio %}
+        <h3 class="title">Bio</h3>
+        <p> {{user.bio}}</p>
+      {%else%}
+        <p> @{{user.username}} has no bio </p>
+      {% endif %}
+      <br>
+      {% if user == current_user %}
+      <a href="{{url_for('main.update_profile',uname=user.username)}}"> <button type="button" name="button" class="btn btn-warning"> Edit User Profile </button></a>
+      {% endif %}
+    </div> 
+  </div>
+  <br>
+  
+  <br>
+  <div class="row">
+    <h3 class="text-center title">Blogs</h3>
+
+            {% if blogs %}
+            <div class="row ">
+                {% for blog in blogs %}
+                <div class="col-md-3 card-group">
+                    <h3 class="source-name">{{blog.title | upper}}</h3>
+                    <div class="white">
+                      <p>Posted by <strong> {{blog.user.username}}</strong></p>
+                      <p>Date: <strong>{{blog.posted.strftime('%Y-%m-%d')}}</strong></p>
+                      <p>"{{blog.message}}"</p>
+                      <a href="{{url_for('main.del_blog',uname=user.username, blog_id = blog.id)}}"><button type="button" name="button" class="btn btn-warning">Delete Blog post</button></a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            {% else %}
+            <h2>You have no Blogs</h2>
+            {% endif %}
+          </div>
+  </div>
+  <div class="row text-center">
+    <br>
+    <a href="{{url_for('main.new_blog',uname=user.username)}}"> <button type="button" name="button" class="btn btn-warning"> Add a New Blog</button></a>
+  </div>
+  <br>
+  <br>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+.card{
+    border: 2px black;
+}
+body{
+    font-family: 'Raleway', sans-serif;
+}
+.navbar-brand{
+    font-family: 'Dancing Script', cursive;
+    font-size: x-large;
+}
+.title{
+    font-family: 'Amiri', serif;
+}
+.card-group{
+    margin-top: 2%;
+    border: 1px solid grey;
+    box-shadow: 3px 3px 3px grey;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+.container{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.head{
+    font-family: 'Dancing Script', cursive;
+    font-size: 500%;
+}
