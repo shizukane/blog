@@ -1,6 +1,6 @@
 # Blog
 #### This is an online platform where a user can write his own blogs, read blogs from other users, comment on blogs as well as maintain their own profiles by deleting personal blog articles or deleting comments on their own blogs., 2020
-#### By **Joan Nekoye**
+#### By **Shizukane Darolle**
 ## Description
 This is an online platform where a user can write his own blogs, read blogs from other users, comment on blogs as well as maintain their own profiles by deleting personal blog articles or deleting comments on their own blogs.
 ## BDD
@@ -23,11 +23,11 @@ No Bugs
 ## Technologies Used
 * CSS for styling.
 * HTML for webpage design.
-* Python3.6.
+* Python3
 * Flask
 
 ## Support and contact details
-* Email: joannekoye@mail.com
+* Email: drizydarolle@gmail.com
 ### License and Copyright details
 * The MIT License (MIT)
-* Copyright (c) 2020**Joan Nekoye**
+* Copyright (c) 2020**Darolle Shizukane**
